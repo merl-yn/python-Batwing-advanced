@@ -51,187 +51,229 @@ class Human(Person):
 
             # 500-999
             elif self.availability_of_money in range(500, 1000):
-                self.make_home = "make own home"
-                self.need_discount = input("Do you have a discount? ")
+                i = input('Do you want to buy a house? Choose y/n: ')
 
-                if self.need_discount == 'y':
-                    self.house.area = list(AREA.values())[0]
-                    self.house.cost = list(COST.values())[0]
-                    self.availability_of_money -= self.house.apply_discount()
-                    return f'You bought {list(AREA.keys())[0]} home with area {list(AREA.values())[0]}m2.' \
-                           f' Home cost {int(self.house.apply_discount())}'
+                if i == 'y':
+                    self.make_home = "make own home"
+                    self.need_discount = input("Do you have a discount? Choose y/n: ")
+
+                    if self.need_discount == 'y':
+                        self.house.area = list(AREA.values())[0]
+                        self.house.cost = list(COST.values())[0]
+                        self.availability_of_money -= self.house.apply_discount()
+                        return f'You bought {list(AREA.keys())[0]} home with area {list(AREA.values())[0]}m2.' \
+                               f' Home cost {int(self.house.apply_discount())}'
+
+                    else:
+                        self.availability_of_money -= 500
+                        return f'You bought {list(AREA.keys())[0]} home with area {list(AREA.values())[0]}m2. ' \
+                               f'Home cost {list(COST.values())[0]}$'
+
                 else:
-                    self.availability_of_money -= 500
-                    return f'You bought {list(AREA.keys())[0]} home with area {list(AREA.values())[0]}m2. ' \
-                           f'Home cost {list(COST.values())[0]}$'
+                    return "You didn't want to buy a house"
 
             # 1000-1499
             elif self.availability_of_money in range(1000, 1500):
-                self.make_home = "make own home"
-                self.option = input("You can buy small or middle house. Choose one of: ")
+                i = input('Do you want to buy a house? Choose y/n: ')
 
-                # 500-1000
-                if self.option == 'small':
-                    self.need_discount = input("Do you have a discount? ")
+                if i == 'y':
 
-                    if self.need_discount == 'y':
-                        self.house.area = list(AREA.values())[0]
-                        self.house.cost = list(COST.values())[0]
-                        self.availability_of_money -= self.house.apply_discount()
-                        return f'You bought {list(AREA.keys())[0]} home with area {list(AREA.values())[0]}m2.' \
-                               f' Home cost {int(self.house.apply_discount())}'
+                    self.option = input("You can buy small or middle house. Choose one of: ")
+
+                    # 500-1000
+                    if self.option == 'small':
+
+                        self.make_home = "make own home"
+                        self.need_discount = input("Do you have a discount? Choose y/n: ")
+
+                        if self.need_discount == 'y':
+                            self.house.area = list(AREA.values())[0]
+                            self.house.cost = list(COST.values())[0]
+                            self.availability_of_money -= self.house.apply_discount()
+                            return f'You bought {list(AREA.keys())[0]} home with area {list(AREA.values())[0]}m2.' \
+                                   f' Home cost {int(self.house.apply_discount())}'
+                        else:
+                            self.availability_of_money -= 500
+                            return f'You bought {list(AREA.keys())[0]} home with area {list(AREA.values())[0]}m2. ' \
+                                   f'Home cost {list(COST.values())[0]}$'
+
+                    # 1000-1499
+                    elif self.option == 'middle':
+
+                        self.make_home = "make own home"
+                        self.need_discount = input("Do you have a discount? Choose y/n: ")
+
+                        if self.need_discount == 'y':
+                            self.house.area = list(AREA.values())[1]
+                            self.house.cost = list(COST.values())[1]
+                            self.availability_of_money -= self.house.apply_discount()
+                            return f'You bought {list(AREA.keys())[1]} home with area {list(AREA.values())[1]}m2.' \
+                                   f' Home cost {int(self.house.apply_discount())}'
+
+                        else:
+                            self.availability_of_money -= 1000
+                            return f'You bought {list(AREA.keys())[1]} home with area {list(AREA.values())[1]}m2. ' \
+                                   f'Home cost {list(COST.values())[1]}$'
+
+                    # incorrect
                     else:
-                        self.availability_of_money -= 500
-                        return f'You bought {list(AREA.keys())[0]} home with area {list(AREA.values())[0]}m2. ' \
-                               f'Home cost {list(COST.values())[0]}$'
+                        print('Choose SMALL or MIDDLE!!!')
+                        return self.get_info()
 
-                # 1000-1499
-                elif self.option == 'middle':
-
-                    self.need_discount = input("Do you have a discount? ")
-
-                    if self.need_discount == 'y':
-                        self.house.area = list(AREA.values())[1]
-                        self.house.cost = list(COST.values())[1]
-                        self.availability_of_money -= self.house.apply_discount()
-                        return f'You bought {list(AREA.keys())[1]} home with area {list(AREA.values())[1]}m2.' \
-                               f' Home cost {int(self.house.apply_discount())}'
-
-                    else:
-                        self.availability_of_money -= 1000
-                        return f'You bought {list(AREA.keys())[1]} home with area {list(AREA.values())[1]}m2. ' \
-                               f'Home cost {list(COST.values())[1]}$'
-
-                # incorrect
                 else:
-                    return 'Choose SMALL or MIDDLE!!!'
+                    return "You didn't want to buy a house"
 
             # 1500-2999
             elif self.availability_of_money in range(1500, 3000):
-                self.make_home = "make own home"
-                self.option = input("You can buy small, middle or big house. Choose one of: ")
+                i = input('Do you want to buy a house? Choose y/n: ')
 
-                # 500-1000
-                if self.option == 'small':
-                    self.need_discount = input("Do you have a discount? ")
+                if i == 'y':
 
-                    if self.need_discount == 'y':
-                        self.house.area = list(AREA.values())[0]
-                        self.house.cost = list(COST.values())[0]
-                        self.availability_of_money -= self.house.apply_discount()
-                        return f'You bought {list(AREA.keys())[0]} home with area {list(AREA.values())[0]}m2.' \
-                               f' Home cost {int(self.house.apply_discount())}'
+                    self.option = input("You can buy small, middle or big house. Choose one of: ")
 
+                    # 500-1000
+                    if self.option == 'small':
+
+                        self.make_home = "make own home"
+                        self.need_discount = input("Do you have a discount? Choose y/n: ")
+
+                        if self.need_discount == 'y':
+                            self.house.area = list(AREA.values())[0]
+                            self.house.cost = list(COST.values())[0]
+                            self.availability_of_money -= self.house.apply_discount()
+                            return f'You bought {list(AREA.keys())[0]} home with area {list(AREA.values())[0]}m2.' \
+                                   f' Home cost {int(self.house.apply_discount())}'
+
+                        else:
+                            self.availability_of_money -= 500
+                            return f'You bought {list(AREA.keys())[0]} home with area {list(AREA.values())[0]}m2. ' \
+                                   f'Home cost {list(COST.values())[0]}$'
+
+                    # 1000-1499
+                    elif self.option == 'middle':
+
+                        self.make_home = "make own home"
+                        self.need_discount = input("Do you have a discount? Choose y/n: ")
+
+                        if self.need_discount == 'y':
+                            self.house.area = list(AREA.values())[1]
+                            self.house.cost = list(COST.values())[1]
+                            self.availability_of_money -= self.house.apply_discount()
+                            return f'You bought {list(AREA.keys())[1]} home with area {list(AREA.values())[1]}m2.' \
+                                   f' Home cost {int(self.house.apply_discount())}'
+                        else:
+                            self.availability_of_money -= 1000
+                            return f'You bought {list(AREA.keys())[1]} home with area {list(AREA.values())[1]}m2. ' \
+                                   f'Home cost {list(COST.values())[1]}$'
+
+                    # 1500-2999
+                    elif self.option == 'big':
+
+                        self.make_home = "make own home"
+                        self.need_discount = input("Do you have a discount? Choose y/n: ")
+
+                        if self.need_discount == 'y':
+                            self.house.area = list(AREA.values())[2]
+                            self.house.cost = list(COST.values())[2]
+                            self.availability_of_money -= self.house.apply_discount()
+                            return f'You bought {list(AREA.keys())[2]} home with area {list(AREA.values())[2]}m2.' \
+                                   f' Home cost {int(self.house.apply_discount())}'
+                        else:
+                            self.availability_of_money -= 1500
+                            return f'You bought {list(AREA.keys())[2]} home with area {list(AREA.values())[2]}m2. ' \
+                                   f'Home cost {list(COST.values())[2]}$'
+
+                    # incorrect
                     else:
-                        self.availability_of_money -= 500
-                        return f'You bought {list(AREA.keys())[0]} home with area {list(AREA.values())[0]}m2. ' \
-                               f'Home cost {list(COST.values())[0]}$'
+                        print('Choose SMALL, MIDDLE, BIG!!!')
+                        return self.get_info()
 
-                # 1000-1499
-                elif self.option == 'middle':
-
-                    self.need_discount = input("Do you have a discount? ")
-
-                    if self.need_discount == 'y':
-                        self.house.area = list(AREA.values())[1]
-                        self.house.cost = list(COST.values())[1]
-                        self.availability_of_money -= self.house.apply_discount()
-                        return f'You bought {list(AREA.keys())[1]} home with area {list(AREA.values())[1]}m2.' \
-                               f' Home cost {int(self.house.apply_discount())}'
-                    else:
-                        self.availability_of_money -= 1000
-                        return f'You bought {list(AREA.keys())[1]} home with area {list(AREA.values())[1]}m2. ' \
-                               f'Home cost {list(COST.values())[1]}$'
-
-                # 1500-2999
-                elif self.option == 'big':
-                    self.need_discount = input("Do you have a discount? ")
-
-                    if self.need_discount == 'y':
-                        self.house.area = list(AREA.values())[2]
-                        self.house.cost = list(COST.values())[2]
-                        self.availability_of_money -= self.house.apply_discount()
-                        return f'You bought {list(AREA.keys())[2]} home with area {list(AREA.values())[2]}m2.' \
-                               f' Home cost {int(self.house.apply_discount())}'
-                    else:
-                        self.availability_of_money -= 1500
-                        return f'You bought {list(AREA.keys())[2]} home with area {list(AREA.values())[2]}m2. ' \
-                               f'Home cost {list(COST.values())[2]}$'
-
-                # incorrect
                 else:
-                    return 'Choose SMALL, MIDDLE, BIG or VERY BIG!!!'
+                    return "You didn't want to buy a house"
 
             # 3000+
             elif self.availability_of_money >= 3000:
-                self.make_home = "make own home"
-                self.option = input("You can buy small, middle, big or very big house. Choose one of: ")
+                i = input('Do you want to buy a house? Choose y/n: ')
 
-                # 500-1000
-                if self.option == 'small':
-                    self.need_discount = input("Do you have a discount? ")
+                if i == 'y':
+                    self.option = input("You can buy small, middle, big or very big house. Choose one of: ")
 
-                    if self.need_discount == 'y':
-                        self.house.area = list(AREA.values())[0]
-                        self.house.cost = list(COST.values())[0]
-                        self.availability_of_money -= self.house.apply_discount()
-                        return f'You bought {list(AREA.keys())[0]} home with area {list(AREA.values())[0]}m2.' \
-                               f' Home cost {int(self.house.apply_discount())}'
+                    # 500-1000
+                    if self.option == 'small':
 
+                        self.make_home = "make own home"
+                        self.need_discount = input("Do you have a discount? Choose y/n: ")
+
+                        if self.need_discount == 'y':
+                            self.house.area = list(AREA.values())[0]
+                            self.house.cost = list(COST.values())[0]
+                            self.availability_of_money -= self.house.apply_discount()
+                            return f'You bought {list(AREA.keys())[0]} home with area {list(AREA.values())[0]}m2.' \
+                                   f' Home cost {int(self.house.apply_discount())}'
+
+                        else:
+                            self.availability_of_money -= 500
+                            return f'You bought {list(AREA.keys())[0]} home with area {list(AREA.values())[0]}m2. ' \
+                                   f'Home cost {list(COST.values())[0]}$'
+
+                    # 1000-1499
+                    elif self.option == 'middle':
+
+                        self.make_home = "make own home"
+                        self.need_discount = input("Do you have a discount? Choose y/n: ")
+
+                        if self.need_discount == 'y':
+                            self.house.area = list(AREA.values())[1]
+                            self.house.cost = list(COST.values())[1]
+                            self.availability_of_money -= self.house.apply_discount()
+                            return f'You bought {list(AREA.keys())[1]} home with area {list(AREA.values())[1]}m2.' \
+                                   f' Home cost {int(self.house.apply_discount())}'
+                        else:
+                            self.availability_of_money -= 1000
+                            return f'You bought {list(AREA.keys())[1]} home with area {list(AREA.values())[1]}m2. ' \
+                                   f'Home cost {list(COST.values())[1]}$'
+
+                    # 1500-2999
+                    elif self.option == 'big':
+
+                        self.make_home = "make own home"
+                        self.need_discount = input("Do you have a discount? Choose y/n: ")
+
+                        if self.need_discount == 'y':
+                            self.house.area = list(AREA.values())[2]
+                            self.house.cost = list(COST.values())[2]
+                            self.availability_of_money -= self.house.apply_discount()
+                            return f'You bought {list(AREA.keys())[2]} home with area {list(AREA.values())[2]}m2.' \
+                                   f' Home cost {int(self.house.apply_discount())}'
+                        else:
+                            self.availability_of_money -= 1500
+                            return f'You bought {list(AREA.keys())[2]} home with area {list(AREA.values())[2]}m2. ' \
+                                   f'Home cost {list(COST.values())[2]}$'
+
+                    # 3000+
+                    elif self.option == 'very big':
+
+                        self.make_home = "make own home"
+                        self.need_discount = input("Do you have a discount? Choose y/n: ")
+
+                        if self.need_discount == 'y':
+                            self.house.area = list(AREA.values())[3]
+                            self.house.cost = list(COST.values())[3]
+                            self.availability_of_money -= self.house.apply_discount()
+                            return f'You bought {list(AREA.keys())[3]} home with area {list(AREA.values())[3]}m2.' \
+                                   f' Home cost {int(self.house.apply_discount())}'
+                        else:
+                            self.availability_of_money -= 3000
+                            return f'You bought {list(AREA.keys())[3]} home with area {list(AREA.values())[3]}m2. ' \
+                                   f'Home cost {list(COST.values())[3]}$'
+
+                    # incorrect
                     else:
-                        self.availability_of_money -= 500
-                        return f'You bought {list(AREA.keys())[0]} home with area {list(AREA.values())[0]}m2. ' \
-                               f'Home cost {list(COST.values())[0]}$'
+                        print('Choose SMALL, MIDDLE, BIG or VERY BIG!!!')
+                        return self.get_info()
 
-                # 1000-1499
-                elif self.option == 'middle':
-
-                    self.need_discount = input("Do you have a discount? ")
-
-                    if self.need_discount == 'y':
-                        self.house.area = list(AREA.values())[1]
-                        self.house.cost = list(COST.values())[1]
-                        self.availability_of_money -= self.house.apply_discount()
-                        return f'You bought {list(AREA.keys())[1]} home with area {list(AREA.values())[1]}m2.' \
-                               f' Home cost {int(self.house.apply_discount())}'
-                    else:
-                        self.availability_of_money -= 1000
-                        return f'You bought {list(AREA.keys())[1]} home with area {list(AREA.values())[1]}m2. ' \
-                               f'Home cost {list(COST.values())[1]}$'
-
-                # 1500-2999
-                elif self.option == 'big':
-                    self.need_discount = input("Do you have a discount? ")
-
-                    if self.need_discount == 'y':
-                        self.house.area = list(AREA.values())[2]
-                        self.house.cost = list(COST.values())[2]
-                        self.availability_of_money -= self.house.apply_discount()
-                        return f'You bought {list(AREA.keys())[2]} home with area {list(AREA.values())[2]}m2.' \
-                               f' Home cost {int(self.house.apply_discount())}'
-                    else:
-                        self.availability_of_money -= 1500
-                        return f'You bought {list(AREA.keys())[2]} home with area {list(AREA.values())[2]}m2. ' \
-                               f'Home cost {list(COST.values())[2]}$'
-
-                # 3000+
-                elif self.option == 'very big':
-                    self.need_discount = input("Do you have a discount? ")
-
-                    if self.need_discount == 'y':
-                        self.house.area = list(AREA.values())[3]
-                        self.house.cost = list(COST.values())[3]
-                        self.availability_of_money -= self.house.apply_discount()
-                        return f'You bought {list(AREA.keys())[3]} home with area {list(AREA.values())[3]}m2.' \
-                            f' Home cost {int(self.house.apply_discount())}'
-                    else:
-                        self.availability_of_money -= 3000
-                        return f'You bought {list(AREA.keys())[3]} home with area {list(AREA.values())[3]}m2. ' \
-                            f'Home cost {list(COST.values())[3]}$'
-
-                        # incorrect
                 else:
-                    return 'Choose SMALL, MIDDLE, BIG or VERY BIG!!!'
+                    return "You didn't want to buy a house"
 
         else:
             return "You already have a house!"
@@ -260,8 +302,9 @@ class Home(House):
 
 
 if __name__ == '__main__':
-    petya = Human('Petya', 18, 2500)
+    petya = Human('Petya', 18, 3000)
     print(petya.get_info())
     print(petya.make_money())
     print(petya.buy_house)
-    print(petya.get_info())
+    print(petya.make_money())
+    print(petya.buy_house)
